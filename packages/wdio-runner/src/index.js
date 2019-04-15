@@ -124,6 +124,8 @@ export default class Runner extends EventEmitter {
         let failures = 0
         try {
             failures = await this.framework.run(cid, this.config, specs, caps, this.reporter)
+            // eslint-disable-next-line no-console
+            console.log(this.config)
             await this._fetchDriverLogs(this.config, caps.excludeDriverLogs)
         } catch (e) {
             log.error(e)
@@ -213,7 +215,11 @@ export default class Runner extends EventEmitter {
             /**
              * driver supports it
              */
-            typeof global.browser.getLogs === 'undefined'
+            typeof global.browser.getLogs === 'undefined' ||
+            /**
+             * Is not WinAppDriver
+             */
+            global.browser.isWindows(config.capabilities) != true
         ) {
             return
         }

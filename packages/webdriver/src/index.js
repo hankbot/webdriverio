@@ -62,13 +62,14 @@ export default class WebDriver {
         /**
          * apply mobile flags to driver scope
          */
-        const { isW3C, isMobile, isIOS, isAndroid, isChrome, isSauce } = environmentDetector(params)
+        const { isW3C, isMobile, isIOS, isAndroid, isChrome, isSauce, isWindows } = environmentDetector(params)
         const environmentFlags = {
             isW3C: { value: isW3C },
             isMobile: { value: isMobile },
             isIOS: { value: isIOS },
             isAndroid: { value: isAndroid },
-            isChrome: { value: isChrome }
+            isChrome: { value: isChrome },
+            isWindows: { value: isWindows },
         }
 
         const protocolCommands = getPrototype({ isW3C, isMobile, isIOS, isAndroid, isChrome, isSauce })
