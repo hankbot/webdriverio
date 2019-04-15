@@ -279,6 +279,15 @@ export function isAndroid (caps) {
 }
 
 /**
+ * check if session is run on Windows device
+ * @param  {Object}  capabilities  caps of session response
+ * @return {Boolean}               true if run on Windows device
+ */
+export function isWindows(caps) {
+    return Boolean((caps.platformName && caps.platformName.match(/Windows/i)))
+}
+
+/**
  * detects if session is run on Sauce with extended debugging enabled
  * @param  {string}  hostname     hostname of session request
  * @param  {object}  capabilities session capabilities
@@ -311,7 +320,8 @@ export function environmentDetector ({ hostname, capabilities, requestedCapabili
         isMobile: isMobile(capabilities),
         isIOS: isIOS(capabilities),
         isAndroid: isAndroid(capabilities),
-        isSauce: isSauce(hostname, requestedCapabilities.w3cCaps.alwaysMatch)
+        isSauce: isSauce(hostname, requestedCapabilities.w3cCaps.alwaysMatch),
+        isWindows: isWindows(capabilities),
     }
 }
 

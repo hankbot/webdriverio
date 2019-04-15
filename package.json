@@ -107,5 +107,6 @@
       "packages/webdriverio/build",
       "packages/webdriver/build"
     ]
-  }
+  },
+  "dependencies": {}
 }
