@@ -219,7 +219,7 @@ export default class Runner extends EventEmitter {
             /**
              * Is not WinAppDriver
              */
-            global.browser.isWindows(config.capabilities) != true
+            global.browser.isWindows
         ) {
             return
         }
