@@ -124,8 +124,6 @@ export default class Runner extends EventEmitter {
         let failures = 0
         try {
             failures = await this.framework.run(cid, this.config, specs, caps, this.reporter)
-            // eslint-disable-next-line no-console
-            console.log(this.config)
             await this._fetchDriverLogs(this.config, caps.excludeDriverLogs)
         } catch (e) {
             log.error(e)
@@ -179,7 +177,6 @@ export default class Runner extends EventEmitter {
         /**
          * register command event
          */
-        // console.log(this)
         browser.on('command', (command) => this.reporter.emit(
             'client:beforeCommand',
             Object.assign(command, { sessionId: browser.sessionId })
