@@ -72,7 +72,7 @@ export default class WebDriver {
             isWindows: { value: isWindows },
         }
 
-        const protocolCommands = getPrototype({ isW3C, isMobile, isIOS, isAndroid, isChrome, isSauce })
+        const protocolCommands = getPrototype({ isW3C, isMobile, isIOS, isAndroid, isChrome, isSauce, isWindows })
         const prototype = merge(protocolCommands, environmentFlags, userPrototype)
         const monad = webdriverMonad(params, modifier, prototype)
         return monad(response.value.sessionId || response.sessionId, commandWrapper)
