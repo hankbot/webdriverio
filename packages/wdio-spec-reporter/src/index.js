@@ -96,7 +96,10 @@ class SpecReporter extends WDIOReporter {
      */
     getTestLink ({ config, sessionId }) {
         if (config.hostname.includes('saucelabs')) {
-            return ['', `Check out job at https://app.saucelabs.com/tests/${sessionId}`]
+            const dc = config.headless
+                ? '.us-east1.headless'
+                : ['eu', 'eu-central-1'].includes(config.region) ? '.eu-central-1' : ''
+            return ['', `Check out job at https://app${dc}.saucelabs.com/tests/${sessionId}`]
         }
 
         return []
