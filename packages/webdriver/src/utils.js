@@ -316,12 +316,12 @@ export function isSauce (hostname, caps) {
 export function environmentDetector ({ hostname, capabilities, requestedCapabilities }) {
     return {
         isW3C: isW3C(capabilities),
-        isChrome: isChrome(capabilities),
         isMobile: isMobile(capabilities),
         isIOS: isIOS(capabilities),
         isAndroid: isAndroid(capabilities),
-        isSauce: isSauce(hostname, requestedCapabilities.w3cCaps.alwaysMatch),
+        isChrome: isChrome(capabilities),
         isWindows: isWindows(capabilities),
+        isSauce: isSauce(hostname, requestedCapabilities.w3cCaps.alwaysMatch),
     }
 }
 
